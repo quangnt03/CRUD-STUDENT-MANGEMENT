@@ -1,0 +1,17 @@
+extends ./layout
+block content 
+	.container.col-md-8.col-lg-6
+		.card.mb-4
+			.card-body
+				each key in headers
+					.row.border-bottom.mb-3.mt-3
+						.col-sm-4.col-md-4.col-lg-4
+							- let header = (key[0].toUpperCase() + key.slice(1)).replace('_', ' ')
+							b.mb-0=header
+						.col-sm-8.col-md-8
+							p.mb-0=student[key]
+		form(method='POST', action='/delete/' + studentId, target='/').container-fluid.p-0.d-flex.flex-row.justify-content-end
+			a(href='/update/' + studentId).btn.btn-primary.mr-3 Edit 
+			input(type="hidden", name="id")
+			button(type="submit").btn.btn-danger.ml-3 Remove 
+	

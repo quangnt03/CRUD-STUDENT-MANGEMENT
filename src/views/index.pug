@@ -1,0 +1,22 @@
+extends layout
+block content
+  .container.bg-white
+    .d-flex.flex-column.align-items-end
+      a(href='/create').btn.btn-primary.align-self-end New Student
+    table.table.table-bordered.mt-3
+      thead.thead-light
+        tr
+          each prop in props
+            th(scope='col').text-center=prop
+      tbody
+        each student in students
+          tr
+            td
+              a(href="/profile/" + student.student_id)=student.full_name
+            td.text-center=student.class
+            td.text-center=student.dob
+            td=student.current_address
+            td.text-center=student.math_mark
+            td.text-center=student.literature_mark
+            td.text-center=student.english_mark
+            td.text-center=student.average_mark
